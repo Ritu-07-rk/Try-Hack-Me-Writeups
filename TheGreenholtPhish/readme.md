@@ -169,28 +169,49 @@ A WHOIS lookup on the originating IP address reveals that the IP belongs to **Ho
 ### Question 7
 **What is the full SPF record for this domain?**
 
-**Answer:**
+To identify the SPF record, the Return-Path domain was extracted from the email headers and queried using an SPF lookup tool.
+
+#### Step 1: Identify the Recieved-SPF Domain
+
+The Recieved-SPF domain was obtained from the email headers.
+
+![Email Header Analysis](screenshots/spf2.png)
+
+#### Step 2: Perform an SPF Lookup
+
+The domain was queried using an SPF lookup tool(mxtoolbox) to retrieve the Sender Policy Framework (SPF) record.
+
+![SPF Lookup](screenshots/spf3.png)
+
+#### Result
 
 ```text
 v=spf1 include:spf.protection.outlook.com -all
 ```
 
-The SPF record was obtained by querying the Return-Path domain.
+The SPF record specifies that only servers authorized by Microsoft's Outlook protection service are permitted to send emails on behalf of the domain.
 
 ---
 
 ### Question 8
 **What is the complete DMARC record for this domain?**
 
-**Answer:**
+After identifying the domain, a DMARC lookup was performed to determine the domain's email authentication policy.
+
+#### Step 1: Query the Domain's DMARC Record
+
+A DMARC lookup was conducted using the same domain identified in the email headers.
+Tool- dmarcian.com
+
+![DMARC Lookup](screenshots/dmarc.png)
+
+#### Result
 
 ```text
 v=DMARC1; p=quarantine; fo=1
 ```
 
-![DMARC Lookup](screenshots/dmarc.png)
-
-The DMARC policy is configured with `p=quarantine`, instructing mail servers to quarantine messages that fail DMARC validation.
+The DMARC policy is set to **quarantine**, meaning messages that fail DMARC checks should be placed into the recipient's spam or quarantine folder rather than being delivered directly to the inbox.
 
 ---
 
@@ -225,6 +246,8 @@ The hash was generated using the `sha256sum` command.
 
 **Answer:** `400.26 KB`
 
+![VirusTotal Search](screenshots/virustotal.png)
+
 The file size was identified through VirusTotal after searching the SHA256 hash.
 
 ---
@@ -233,6 +256,8 @@ The file size was identified through VirusTotal after searching the SHA256 hash.
 **What is the actual file type of the attachment?**
 
 **Answer:** `RAR Archive`
+
+![VirusTotal Search](screenshots/virustotal.png)
 
 Although the attachment uses a `.CAB` extension, analysis revealed that the actual file type is a **RAR archive**, indicating an attempt to disguise the file's true nature.
 
