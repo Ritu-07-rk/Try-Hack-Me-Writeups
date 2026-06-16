@@ -150,7 +150,7 @@ As the assigned Incident Response Analyst, the objective is to validate the aler
 
 **Answer:** `223.123.4.50`
 
-![Suspicious Sign-in IP](screenshots/q1_signin_ip.png)
+![Suspicious Sign-in IP](screenshots/dq1.png)
 
 The authentication logs revealed that the suspicious sign-in activity originated from this IP address.
 
@@ -162,7 +162,7 @@ The authentication logs revealed that the suspicious sign-in activity originated
 
 **Answer:** `Amsterdam`
 
-![Sign-in Location](screenshots/q2_location.png)
+![Sign-in Location](screenshots/dq2.png)
 
 Since, it is mentioned that all corporate work takes place in London, any other location is suspicious.
 
@@ -174,7 +174,7 @@ Since, it is mentioned that all corporate work takes place in London, any other 
 
 `index=ir sourcetype="azure:aad:signin" ipAddress="223.123.4.50" user_id="l.chen@nexusfinancial.thm" "status.errorCode"=0`
 
-![Authentication Logs](screenshots/q3_timestamp.png)
+![Authentication Logs](screenshots/dq3.png)
 
 The first suspicious authentication event occurred at this timestamp.
 
@@ -188,7 +188,7 @@ The first suspicious authentication event occurred at this timestamp.
 
 `index=ir sourcetype="o365:reporting:messagetrace" RecipientAddress="l.chen@nexusfinancial.thm"`
 Check the emails before the timestamp in the question 3. 
-![Email Evidence](screenshots/q4_email_subject.png)
+![Email Evidence](screenshots/dq4.png)
 
 The phishing email used an urgent subject line to encourage immediate action.
 
@@ -200,7 +200,7 @@ The phishing email used an urgent subject line to encourage immediate action.
 
 **Answer:** `nexus-verify.thm`
 
-![Phishing Domain](screenshots/q5_sender_domain.png)
+![Phishing Domain](screenshots/dq5.png)
 
 The sender domain was identified as a malicious domain impersonating a legitimate service.
 
