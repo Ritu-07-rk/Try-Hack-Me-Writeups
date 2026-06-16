@@ -192,6 +192,8 @@ These weaknesses ultimately contribute to future security incidents.
 ---
 
 # Practical Investigation
+## Open the Nexus folder
+![NexusFolder](screenshots/intro.png)
 
 ## Question 1
 
@@ -199,7 +201,7 @@ These weaknesses ultimately contribute to future security incidents.
 
 **Answer:** `10.10.10.2`
 
-![Asset Inventory](screenshots/q1_asset_inventory.png)
+![Asset Inventory](screenshots/q1.png)
 
 ---
 
@@ -209,7 +211,7 @@ These weaknesses ultimately contribute to future security incidents.
 
 **Answer:** `Multi-Factor Authentication`
 
-![Pentest Report](screenshots/q2_mfa.png)
+![Pentest Report](screenshots/q2.png)
 
 ---
 
@@ -219,7 +221,7 @@ These weaknesses ultimately contribute to future security incidents.
 
 **Answer:** `2`
 
-![Pentest Report Findings](screenshots/q3_pentest_findings.png)
+![Pentest Report Findings](screenshots/q3.png)
 
 ---
 
@@ -229,9 +231,10 @@ These weaknesses ultimately contribute to future security incidents.
 
 **Answer:** `Phishing Campaign`
 
-![Historic Incident Log](screenshots/q4_incident_log.png)
+![Historic Incident Log](screenshots/q4.png)
 
----
+# Open the Run dialog box. Type secpol.msc
+![RunBox](screenshots/q5b.png)
 
 ## Question 5
 
@@ -239,7 +242,7 @@ These weaknesses ultimately contribute to future security incidents.
 
 **Answer:** `6`
 
-![Password Policy](screenshots/q5_password_policy.png)
+![Password Policy](screenshots/q6.png)
 
 ---
 
@@ -249,7 +252,7 @@ These weaknesses ultimately contribute to future security incidents.
 
 **Answer:** `No Auditing`
 
-![Audit Policy](screenshots/q6_audit_policy.png)
+![Audit Policy](screenshots/q7.png)
 
 ---
 
