@@ -123,7 +123,7 @@ What keywords does the malicious inbox rule on Laura Chen's account filter for? 
 
 ### Investigation
 
-Reviewing mailbox audit logs revealed a malicious inbox rule created by the attacker. The rule was configured to hide security-related emails by filtering messages containing specific keywords.
+`index=ir Operation=New-InboxRule`
 
 ### Answer
 
@@ -147,8 +147,7 @@ What is the value of the DeleteMessage field in the malicious inbox rule on Laur
 
 ### Investigation
 
-The inbox rule configuration showed that any email matching the specified keywords would be automatically deleted from the mailbox.
-
+`index=ir Operation=New-InboxRule`
 ### Answer
 
 ```text
@@ -171,7 +170,7 @@ What is the name of the inbox rule created on the second compromised account?
 
 ### Investigation
 
-Analysis of mailbox configuration changes on the second compromised account revealed another malicious inbox rule used by the attacker.
+`index=ir Operation=New-InboxRule user_id="k.patel@nexusfinancial.thm"`
 
 ### Answer
 
@@ -219,7 +218,7 @@ How many internal Nexus Financial employees received the internal phishing email
 
 ### Investigation
 
-Message trace logs were reviewed to identify all internal recipients of the phishing email sent from the compromised account.
+`index=ir sourcetype="o365:reporting:messagetrace" subject="HR Policy Update — Immediate Action Required" SenderAddress!="hr-support@nexus-verify.thm"`
 
 ### Answer
 
