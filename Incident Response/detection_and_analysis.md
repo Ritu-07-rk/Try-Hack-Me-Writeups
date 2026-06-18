@@ -214,9 +214,11 @@ The sender domain was identified as a malicious domain impersonating a legitimat
 
 **Answer:** `2`
 
+`index=ir sourcetype="azure:aad:signin" ipAddress="223.123.4.50"`
+
 Investigation of the authentication logs revealed that two Nexus Financial accounts showed sign-in activity originating from the attacker's IP address.
 
-![Sign-in Activity](screenshots/q6_signin_activity.png)
+![Sign-in Activity](screenshots/aq12.png)
 
 ---
 
@@ -228,7 +230,7 @@ Investigation of the authentication logs revealed that two Nexus Financial accou
 
 Analysis of additional sign-in events identified a second compromised user account associated with the same attacker infrastructure.
 
-![Second Compromised Account](screenshots/q7_second_account.png)
+![Second Compromised Account](screenshots/aq12.png)
 
 ---
 
@@ -238,9 +240,11 @@ Analysis of additional sign-in events identified a second compromised user accou
 
 **Answer:** `Junk Filter Update`
 
+`index=ir sourcetype="o365:management:activity" UserId="l.chen@nexusfinancial.thm" Operation="New-InboxRule"`
+
 Mailbox audit logs revealed that the attacker created an inbox rule named **Junk Filter Update**, likely to hide future phishing or security-related emails from the victim.
 
-![Inbox Rule](screenshots/q8_inbox_rule.png)
+![Inbox Rule](screenshots/aq3.png)
 
 ---
 
@@ -252,7 +256,7 @@ Mailbox audit logs revealed that the attacker created an inbox rule named **Junk
 
 Email trace analysis showed that the phishing message was delivered to two employee accounts within the organization.
 
-![Email Trace](screenshots/q9_email_trace.png)
+![Email Trace](screenshots/aq4.png)
 
 ---
 
