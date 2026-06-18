@@ -206,27 +206,90 @@ The sender domain was identified as a malicious domain impersonating a legitimat
 
 ---
 
+## Analysis Practical
+
+### Question 1
+
+#### How many Nexus Financial accounts show sign-in activity from the attacker's IP?
+
+**Answer:** `2`
+
+Investigation of the authentication logs revealed that two Nexus Financial accounts showed sign-in activity originating from the attacker's IP address.
+
+![Sign-in Activity](screenshots/q6_signin_activity.png)
+
+---
+
+### Question 2
+
+#### What is the email address of the second compromised account?
+
+**Answer:** `k.patel@nexusfinancial.thm`
+
+Analysis of additional sign-in events identified a second compromised user account associated with the same attacker infrastructure.
+
+![Second Compromised Account](screenshots/q7_second_account.png)
+
+---
+
+### Question 3
+
+#### What is the name of the inbox rule created on Laura Chen's account?
+
+**Answer:** `Junk Filter Update`
+
+Mailbox audit logs revealed that the attacker created an inbox rule named **Junk Filter Update**, likely to hide future phishing or security-related emails from the victim.
+
+![Inbox Rule](screenshots/q8_inbox_rule.png)
+
+---
+
+### Question 4
+
+#### How many Nexus Financial employee accounts received the initial phishing email?
+
+**Answer:** `2`
+
+Email trace analysis showed that the phishing message was delivered to two employee accounts within the organization.
+
+![Email Trace](screenshots/q9_email_trace.png)
+
+---
+
 # Indicators of Compromise (IOCs)
 
-### IP Address
+## IP Address
 
 ```text
 223.123.4.50
 ```
 
-### Malicious Domain
+## Malicious Domain
 
 ```text
 nexus-verify.thm
 ```
 
-### Targeted User
+## Compromised Accounts
+
+```text
+l.chen@nexusfinancial.thm
+k.patel@nexusfinancial.thm
+```
+
+## Targeted User
 
 ```text
 Laura Chen
 ```
 
-### Phishing Email Subject
+## Malicious Inbox Rule
+
+```text
+Junk Filter Update
+```
+
+## Phishing Email Subject
 
 ```text
 HR Policy Update — Immediate Action Required
@@ -236,7 +299,16 @@ HR Policy Update — Immediate Action Required
 
 # Summary
 
-The investigation identified a phishing-based account compromise targeting Laura Chen. A malicious email from **nexus-verify.thm** was delivered shortly before suspicious sign-in activity was observed from **223.123.4.50** in **Amsterdam**. Correlation of email and authentication logs confirmed the phishing email as the likely initial access vector used by the attacker.
+The investigation began with a high-severity SIEM alert indicating a successful sign-in from an unfamiliar IP address. Analysis revealed that the activity originated from **223.123.4.50** in **Amsterdam** and targeted **Laura Chen's** account shortly after she received a phishing email from **nexus-verify.thm**.
+
+Further investigation identified a second compromised account, **[k.patel@nexusfinancial.thm](mailto:k.patel@nexusfinancial.thm)**, which also showed sign-in activity from the same attacker IP. Mailbox audit logs revealed the creation of an inbox rule named **Junk Filter Update**, likely intended to conceal attacker activity. Email trace analysis confirmed that the phishing campaign targeted two employees, demonstrating that the incident extended beyond a single account compromise.
+
+The collected evidence confirmed a phishing-based compromise and established the attacker's infrastructure, affected users, and techniques used to maintain access.
+
+
+
+---
+
 
 
 
