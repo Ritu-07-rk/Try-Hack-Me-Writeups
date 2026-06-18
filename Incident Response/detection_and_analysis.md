@@ -200,7 +200,7 @@ The phishing email used an urgent subject line to encourage immediate action.
 
 **Answer:** `nexus-verify.thm`
 
-![Phishing Domain](screenshots/dq5.png)
+![Phishing Domain](screenshots/dq4.png)
 
 The sender domain was identified as a malicious domain impersonating a legitimate service.
 
