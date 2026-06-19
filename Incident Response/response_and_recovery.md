@@ -259,7 +259,7 @@ How many files were downloaded from SharePoint across both compromised accounts?
 
 ### Investigation
 
-SharePoint audit logs were reviewed to determine the scope of data access and identify files downloaded by the attacker.
+`index=ir sourcetype="o365:management:activity" app=SharePoint action=downloaded | table  SourceFileName, UserId`
 
 ### Answer
 
@@ -269,7 +269,7 @@ SharePoint audit logs were reviewed to determine the scope of data access and id
 
 ### Evidence
 
-![Question 1](screenshots/eradication-recovery.png)
+![Question 1](screenshots/eq1.png)
 
 ---
 
@@ -283,7 +283,7 @@ What is the name of the first file downloaded by the attacker from Laura Chen's 
 
 ### Investigation
 
-File access events within SharePoint showed the sequence of documents accessed and downloaded by the attacker.
+`index=ir sourcetype="o365:management:activity" app=SharePoint action=downloaded | table  _time,SourceFileName, UserId`
 
 ### Answer
 
@@ -293,7 +293,7 @@ Board_Meeting_Notes_July.docx
 
 ### Evidence
 
-![Question 2](screenshots/eradication-recovery.png)
+![Question 2](screenshots/eq2.png)
 
 ---
 
@@ -315,10 +315,6 @@ The attacker created unauthorized SharePoint sharing links that could allow cont
 Revoking all external sharing links created by the attacker from SharePoint
 ```
 
-### Evidence
-
-![Question 3](screenshots/eradication-recovery.png)
-
 ---
 
 ## Question 4
@@ -338,10 +334,9 @@ Microsoft Entra ID sign-in logs were reviewed to determine how the authenticatio
 ```text
 none
 ```
-
 ### Evidence
 
-![Question 4](screenshots/eradication-recovery.png)
+![Question 2](screenshots/eq4.png)
 
 ---
 
@@ -363,9 +358,7 @@ The compromised accounts lacked an additional authentication factor, allowing th
 mfa
 ```
 
-### Evidence
 
-![Question 5](screenshots/eradication-recovery.png)
 
 ---
 
@@ -386,10 +379,6 @@ As part of recovery planning, implementing MFA was identified as a near-term pri
 ```text
 Near term
 ```
-
-### Evidence
-
-![Question 6](screenshots/eradication-recovery.png)
 
 ---
 
