@@ -133,7 +133,7 @@ security;alert;suspicious;password;verify
 
 ### Evidence
 
-![Question 1](screenshots/containment-practical.png)
+![Question 1](screenshots/cq1.png)
 
 ---
 
@@ -156,7 +156,7 @@ True
 
 ### Evidence
 
-![Question 2](screenshots/containment-practical.png)
+![Question 2](screenshots/cq2.png)
 
 ---
 
@@ -202,10 +202,6 @@ Malicious inbox rules allow attackers to hide security notifications and maintai
 Remove the malicious inbox rules immediately
 ```
 
-### Evidence
-
-![Question 4](screenshots/containment-practical.png)
-
 ---
 
 ## Question 5
@@ -249,11 +245,6 @@ The phishing domain was actively being used to deliver malicious emails. Blockin
 ```text
 Block phishing domain at the email gateway
 ```
-
-### Evidence
-
-![Question 6](screenshots/containment-practical.png)
-
 ---
 
 # Task 4 – Eradication & Recovery Practical
