@@ -28,6 +28,8 @@ What is the Machine ID of the machine we are investigating?
 
 `hostnamectl`
 
+![Question1](screenshots/q1.png)
+
 ### Answer
 
 ```text
@@ -48,6 +50,8 @@ What backdoor user account was created on the server?
 
 `sudo cut -d ':' -f1 /etc/shadow`
 
+![Question2](screenshots/q2.png)
+
 ### Answer
 
 ```text
@@ -66,7 +70,9 @@ What is the cronjob that was set up by the attacker for persistence?
 
 ### Investigation
 
-Cron jobs are a common Linux persistence mechanism. Reviewing scheduled tasks associated with the suspicious account revealed a command configured to execute automatically whenever the system rebooted.
+`sudo cat /var/spool/cron/crontabs/root`
+
+![Question3](screenshots/q3.png)
 
 ### Answer
 
@@ -86,7 +92,9 @@ Examine the running processes on the machine. Can you identify the suspicious-lo
 
 ### Investigation
 
-Process enumeration revealed a hidden process running under the backdoor account. The process name was intentionally disguised using a leading period to avoid casual observation.
+`ps aux -u microservice`
+
+![Question4](screenshots/q4.png)
 
 ### Answer
 
@@ -106,7 +114,9 @@ How many processes are found to be running from the backdoor account’s directo
 
 ### Investigation
 
-After identifying the backdoor account, all active processes originating from the account's home directory were examined. Multiple suspicious executables were discovered operating from this location.
+`ps aux -u microservice | grep -i home | grep -i microservice`
+
+![Question5](screenshots/q5.png)
 
 ### Answer
 
@@ -126,7 +136,9 @@ What is the name of the hidden file in memory from the root directory?
 
 ### Investigation
 
-A review of suspicious files loaded into memory revealed a hidden artifact located within the root directory. Hidden files are commonly used by attackers to conceal tools and malware components.
+`ls -la /`
+
+![Question6](screenshots/q6.png)
 
 ### Answer
 
@@ -146,7 +158,9 @@ What suspicious services were installed on the server? Format is service a, serv
 
 ### Investigation
 
-Systemd service configurations were reviewed to identify unauthorized services created for persistence. Two suspicious services were discovered and appeared designed to automatically launch attacker-controlled binaries.
+`grep -r microservice /etc/systemd/system`
+
+![Question7](screenshots/q7.png)
 
 ### Answer
 
@@ -166,7 +180,9 @@ Examine the logs; when was the backdoor account created on this infected system?
 
 ### Investigation
 
-Authentication and system logs were reviewed to reconstruct the attack timeline. User creation events revealed the exact timestamp when the attacker established persistence by creating the backdoor account.
+`cat /var/log/auth.log | grep -a microservice`
+
+![Question8](screenshots/q8.webp)
 
 ### Answer
 
@@ -186,7 +202,9 @@ From which IP address were multiple SSH connections observed against the suspici
 
 ### Investigation
 
-SSH authentication logs were analyzed to identify remote connections associated with the malicious account. Multiple successful and failed connection attempts originated from a single IP address.
+`cat /var/log/auth.log | grep -a microservice`
+
+![Question9](screenshots/q9.png)
 
 ### Answer
 
@@ -206,7 +224,9 @@ How many failed SSH login attempts were observed on the backdoor account?
 
 ### Investigation
 
-Reviewing SSH authentication logs showed repeated failed authentication attempts before successful access was achieved. These events provide insight into attacker behavior and credential usage.
+` cat /var/log/auth.log | grep -a microservice | grep -a Failed
+
+![Question10](screenshots/q10.webp)
 
 ### Answer
 
@@ -226,7 +246,9 @@ Which malicious package was installed on the host?
 
 ### Investigation
 
-Package management records were inspected to identify software installed after the compromise. A suspicious package was discovered that did not belong to the standard system installation and was linked to attacker activity.
+`cat dpkg.log | grep install`
+
+![Question11](screenshots/q11.png)
 
 ### Answer
 
@@ -246,7 +268,10 @@ What is the secret code found in the metadata of the suspicious package?
 
 ### Investigation
 
-Further examination of the malicious package metadata uncovered an embedded code used as part of the challenge. Package metadata often contains useful forensic artifacts including author information, descriptions, and hidden strings.
+`apt show pscanner`
+
+![Question12](screenshots/q12.png)
+
 
 ### Answer
 
