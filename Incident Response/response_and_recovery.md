@@ -180,7 +180,7 @@ Security Updates
 
 ### Evidence
 
-![Question 3](screenshots/containment-practical.png)
+![Question 3](screenshots/cq3.png)
 
 ---
 
@@ -224,7 +224,7 @@ How many internal Nexus Financial employees received the internal phishing email
 
 ### Evidence
 
-![Question 5](screenshots/containment-practical.png)
+![Question 5](screenshots/cq5.png)
 
 ---
 
