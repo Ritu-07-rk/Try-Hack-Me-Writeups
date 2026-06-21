@@ -1,4 +1,4 @@
-# Splunk Investigation – Endpoint Security Incident
+# New Hire Old Artifacts
 
 ## Scenario
 
@@ -26,7 +26,8 @@ A Web Browser Password Viewer executed on the infected machine. What is the name
 
 ### Investigation
 
-Reviewing process creation events revealed the execution of a browser credential harvesting utility. The executable was launched from a temporary directory within the user's profile, a common location used by attackers to stage malicious tools.
+
+![Question1](q1.png)
 
 ### Answer
 
