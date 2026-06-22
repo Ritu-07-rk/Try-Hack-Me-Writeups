@@ -46,8 +46,7 @@ What is listed as the company name?
 ```
 
 ### Investigation
-
-File metadata analysis identified the software publisher associated with the executable. The binary matched a well-known password recovery utility frequently abused by attackers to extract stored browser credentials.
+![Question2](q2.png)
 
 ### Answer
 
@@ -66,8 +65,11 @@ Another suspicious binary running from the same folder was executed on the works
 ```
 
 ### Investigation
+![Question3](q3i.png)
 
-Additional process execution logs showed another suspicious executable launched from the same temporary directory. Reviewing the PE metadata revealed a discrepancy between the executable name and its original filename, indicating potential masquerading.
+Upon finding the suspicious binary, get the hash and search it in tools like VirusTotal
+
+![Question3](q3ii.png)
 
 ### Answer
 
@@ -87,7 +89,13 @@ The binary from the previous question made two outbound connections to a malicio
 
 ### Investigation
 
-Network connection telemetry linked the suspicious executable to outbound communication with a known malicious external host. Defanging the IP prevents accidental interaction.
+It was clearly mentioned in the question that only two connections have been made.
+
+![Question4](q4i.png)
+
+Defang the IP address
+
+![Question4](q4ii.png)
 
 ### Answer
 
@@ -107,7 +115,9 @@ The same binary made some change to a registry key. What was the key path?
 
 ### Investigation
 
-Registry modification events showed the malware interacting with Windows Defender policy settings. Attackers commonly modify Defender policies to weaken endpoint protection and evade detection.
+Modification in registry keys is logged by Event Code 13.
+
+![Question5](q5.png)
 
 ### Answer
 
@@ -127,7 +137,9 @@ Some processes were killed and the associated binaries were deleted. What were t
 
 ### Investigation
 
-Process termination and file deletion events indicated that the attacker attempted to remove evidence by deleting executables after execution.
+Upon using the hint, it told to search for 'taskill /im'
+
+![Question6](q6.png)
 
 ### Answer
 
@@ -149,6 +161,8 @@ The attacker ran several commands within a PowerShell session to change the beha
 
 PowerShell execution logs revealed a sequence of commands designed to modify Microsoft Defender preferences. These commands configured Defender to ignore specific malware detections by assigning custom actions to threat IDs.
 
+![Question7](q7.png)
+
 ### Answer
 
 ```text
@@ -168,6 +182,8 @@ Based on the previous answer, what were the four IDs set by the attacker? Enter 
 ### Investigation
 
 Reviewing the complete PowerShell command sequence revealed four distinct threat identifiers that were added to Defender's exclusion or custom action list.
+
+![Question8](q8.png)
 
 ### Answer
 
@@ -189,6 +205,8 @@ Another malicious binary was executed on the infected workstation from another A
 
 Further process analysis identified an additional executable launched from the user's Roaming profile directory. Malware commonly abuses AppData folders because they are writable by standard users and often evade scrutiny.
 
+![Question9](q9.png)
+
 ### Answer
 
 ```text
@@ -208,6 +226,8 @@ What were the DLLs that were loaded from the binary from the previous question? 
 ### Investigation
 
 DLL load events associated with the EasyCalc process revealed multiple dynamically loaded libraries. These modules provided additional functionality to the malicious application.
+
+![Question10](q10.webp)
 
 ### Answer
 
