@@ -38,10 +38,6 @@ Several forensic tools used throughout this investigation export their results i
 Timeline Explorer
 ```
 
-### Evidence
-
-*(Insert Timeline Explorer screenshot here)*
-
 ---
 
 # Task 4 – Scheduled Tasks
@@ -75,7 +71,7 @@ CnC
 
 ### Evidence
 
-*(Insert Scheduled Task screenshot here)*
+![Question 1](cwa_photos/q41.png)
 
 ---
 
@@ -100,7 +96,7 @@ After identifying the malicious scheduled task, its configuration and associated
 
 ### Evidence
 
-*(Insert Scheduled Task network screenshot here)*
+![Question 2](cwa_photos/q42.png)
 
 ---
 
@@ -146,7 +142,7 @@ Cursed.rar
 
 ### Evidence
 
-*(Insert LNK Timeline screenshot here)*
+![Question 1](cwa_photos/q51.png)
 
 ---
 
@@ -174,7 +170,7 @@ This relationship strongly suggests the archive contained the malicious payload 
 
 ### Evidence
 
-*(Insert Timeline Explorer timestamp screenshot here)*
+![Question 2](cwa_photos/q52.png)
 
 ---
 
@@ -226,7 +222,7 @@ Cipher.exe
 
 ### Evidence
 
-*(Insert Prefetch screenshot here)*
+![Question 1](cwa_photos/q61.png)
 
 ---
 
@@ -247,12 +243,12 @@ Reviewing the execution count of the malicious executable confirmed that it had 
 ### Answer
 
 ```text
-1
+2
 ```
 
 ### Evidence
 
-*(Insert execution count screenshot here)*
+![Question 2](cwa_photos/q62.png)
 
 ---
 
@@ -278,7 +274,7 @@ This timestamp helps correlate malware execution with other forensic artifacts s
 
 ### Evidence
 
-*(Insert Prefetch timestamp screenshot here)*
+![Question 3](cwa_photos/q63.png)
 
 ---
 
@@ -304,13 +300,35 @@ Eric Zimmerman's **AmcacheParser** was used to examine the artifact.
 
 Command used:
 
-```powershell
+```
 .\AmcacheParser.exe -f Amcache.hve --csv C:\Users\Administrator\Desktop
 ```
 
 ---
 
 ## Question 1
+
+### Question
+
+```text
+What is the full path of the malicious file?
+```
+
+### Investigation
+The file path is found using the executable name discovered above.
+
+### Answer
+
+```text
+c:\users\administrator\desktop\cursed\cipher.exe
+```
+
+### Evidence
+
+![Question 1](cwa_photos/q71.png)
+
+---
+## Question 2
 
 ### Question
 
@@ -332,61 +350,10 @@ Its metadata included the complete SHA1 hash, allowing analysts to correlate the
 
 ### Evidence
 
-*(Insert Amcache screenshot here)*
+![Question 2](cwa_photos/q72.png)
 
 ---
 
-## Question 2
-
-### Question
-
-```text
-What was the product name stored within the executable metadata?
-```
-
-### Investigation
-
-The executable's PE metadata was stored within the Amcache entry.
-
-Reviewing the Product Name field can reveal whether malware authors attempted to disguise their payload as legitimate software.
-
-### Answer
-
-```text
-Cipher
-```
-
-### Evidence
-
-*(Insert Product Name screenshot here)*
-
----
-
-## Question 3
-
-### Question
-
-```text
-What was the original filename stored inside the executable?
-```
-
-### Investigation
-
-Attackers frequently rename malware before deployment.
-
-The Original Filename field reveals the filename embedded during compilation, making it useful for malware identification.
-
-### Answer
-
-```text
-Cipher.exe
-```
-
-### Evidence
-
-*(Insert Original Filename screenshot here)*
-
----
 
 # Task 8 – Windows Event Logs
 
@@ -435,7 +402,7 @@ The Source Network Address field recorded the remote host used by the attacker t
 
 ### Evidence
 
-*(Insert Event Log screenshot here)*
+![Question 1](cwa_photos/q81.png)
 
 ---
 
@@ -461,35 +428,7 @@ Administrator
 
 ### Evidence
 
-*(Insert Security Log screenshot here)*
-
----
-
-## Question 3
-
-### Question
-
-```text
-What Windows security feature was disabled before malware execution?
-```
-
-### Investigation
-
-Reviewing Defender Operational logs and PowerShell activity showed that Windows Defender protections were disabled before the malicious executable was launched.
-
-Disabling security controls is a common attacker technique to evade detection and ensure successful malware execution.
-
-This behavior maps directly to **MITRE ATT&CK T1562.001 – Impair Defenses**.
-
-### Answer
-
-```text
-Windows Defender
-```
-
-### Evidence
-
-*(Insert Defender Event screenshot here)*
+![Question 2](cwa_photos/q82.png)
 
 ---
 
