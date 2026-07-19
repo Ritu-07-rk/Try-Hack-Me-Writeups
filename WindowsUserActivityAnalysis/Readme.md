@@ -27,12 +27,14 @@ The Windows Registry is a hierarchical database of OS, application, and user con
 ### Questions & Answers
 
 **Q1. Which hive stores information about installed software?**
+
 Answer: `SOFTWARE`
 
 **Q2. What is the current size of the SAM hive in the attached lab? (In KB)**
+
 Answer: `128`
 
-![SAM hive size in config folder](images/q32.png)
+![SAM hive size in config folder](cwa_photos/q32.png)
 *The `config` folder listing shows `SAM` at 128 KB.*
 
 ---
@@ -60,32 +62,35 @@ Two notable **UserAssist** GUIDs:
 **Q1. The suspect typed a suspicious path in Windows Explorer that points to a `tmp` directory in the C drive. What is the full path?**
 Answer: `C:\system\home\tmp`
 
-![TypedPaths registry key](images/q41.png)
-*`TypedPaths` under `HKCU\...\Explorer\TypedPaths` — `url2` shows `C:\system\home\tmp`.*
+![TypedPaths registry key](cwa_photos/q41.png)
+
 
 **Q2. In the WordWheelQuery search, what was the latest term searched by the user?**
+
 Answer: `wipe`
 
-![WordWheelQuery search terms](images/q42.png)
-*`wipe` sits at MRU position `0` (most recent), timestamped `2024-03-04 13:50:13`.*
+![WordWheelQuery search terms](cwa_photos/q42.png)
+
 
 **Q3. Where was the last text file saved by the suspect?**
+
 Answer: `C:\system\home\tmp\code.txt`
 
-![ComDlg32 OpenSavePidlMRU](images/q43.png)
-*`OpenSavePidlMRU` shows `code.txt` saved to `C:\system\home\tmp\code.txt`.*
+![ComDlg32 OpenSavePidlMRU](cwa_photos/q43.png)
+
 
 **Q4. From the Hacking-tools folder, which suspicious keylogging tool was executed 5 times?**
+
 Answer: `keylogger.exe`
 
-![UserAssist keylogger.exe run count](images/q44.png)
-*`UserAssist` shows `C:\Hacking-tools\keylogger.exe` with a Run Counter of `5`.*
+![UserAssist keylogger.exe run count](cwa_photos/q44.png)
+
 
 **Q5. Which disk wiping utility was executed on this host?**
 Answer: `DiskWipe.exe`
 
-![UserAssist DiskWipe.exe](images/q45.png)
-*`UserAssist` shows `C:\Users\Administrator\Downloads\Tools\DiskWipe.exe` executed on `2024-03-04 12:57:44`.*
+![UserAssist DiskWipe.exe](cwa_photos/q45.png)
+
 
 **Takeaway:** UserAssist execution counts directly tie Johny to a keylogger and a disk-wiping tool — strong evidence of both data theft and anti-forensic intent.
 
@@ -109,16 +114,18 @@ ShellBags track how a user browsed folders (view settings, sort order, window si
 ### Questions & Answers
 
 **Q1. What is the IP address of the Network Share, where the user accessed three folders?**
+
 Answer: `10.10.17.228`
 
-![ShellBags Explorer network share](images/q51.png)
-*ShellBags Explorer shows three child bags under `\\10.10.17.228`: `Users`, `secret-doc`, and `Hacking-tools`.*
+![ShellBags Explorer network share](cwa_photos/q51.png)
+
 
 **Q2. What is the name of the second sub-folder within the Documents folder of the network share that the user accessed?**
+
 Answer: `secret-doc`
 
-![ShellBags Explorer secret-doc folder](images/q52.png)
-*The `secret-doc` share is highlighted as the second folder accessed under the network location.*
+![ShellBags Explorer secret-doc folder](cwa_photos/q52.png)
+
 
 ---
 
@@ -136,12 +143,20 @@ Windows auto-generates a `.lnk` file whenever a user opens a file or application
 ```
 LECmd.exe -f C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Recent\code.lnk
 ```
+### Question and answers
 
-![Recent Items shortcut folder](images/q61.png)
-*`%userprofile%\AppData\Roaming\Microsoft\Windows\Recent` — auto-generated `.lnk` shortcuts, including one for the "10_ways_to_Exfiltrate_Data" document.*
+** Q1. What is the document that was last opened by the user on this machine? **
 
-![LECmd parsed output for code.lnk](images/q62.png)
-*`LECmd.exe` output for `code.lnk`: target created/modified/accessed timestamps, the network share (`\\10.10.17.228\USERS`), and the common path `Administrator\Documents\secret-documents\code.txt`.*
+Answer: `10_ways_to_Exfiltrate_Data.pdf`
+
+![Recent Items shortcut folder](cwa_photos/q61.png)
+
+** Q2. Analyzing the code.lnk file shows that it was accessed from the network shared drive. What is the full path of the network directory? **
+
+Answer: `\\10.10.17.228\Users\Administrator\Documents\secret-documents`
+
+![LECmd parsed output for code.lnk](cwa_photos/q62.png)
+
 
 ---
 
@@ -160,22 +175,25 @@ Combined with LNK analysis, Jump Lists exposed which sensitive files (including 
 ### Questions & Answers
 
 **Q1. A text file named `code.txt` was accessed from a `tmp` directory. What is the full path of the `tmp` directory?**
+
 Answer: `C:\system\home\tmp\code.txt`
 
-![LNK entries showing code.txt path](images/q71.png)
-*LNK/Jump List entries list `My Computer\C:\system\home\tmp\code.txt` as a target, alongside the network share and desktop entries.*
+![LNK entries showing code.txt path](cwa_photos/q71.png)
+
 
 **Q2. What URL was accessed using Internet Explorer?**
+
 Answer: `http://10.10.17.228/`
 
-![LNK entries table](images/q72.png)
-*The same entries view, cross-referenced to confirm the network location `10.10.17.228` tied to the accessed targets.*
+![LNK entries table](cwa_photos/q72.png)
+
 
 **Q3. When did the user access the "How to Hack.pdf" file?**
+
 Answer: `2024-03-04 12:28:26`
 
-![JumpListExplorer showing How to Hack.pdf](images/q73.png)
-*JumpListExplorer's AutomaticDestinations entries show `How to Hack.pdf` (under `important_documents`) with Target/Accessed timestamp `2024-03-04 12:28:26`.*
+![JumpListExplorer showing How to Hack.pdf](cwa_photos/q73.png)
+
 
 ---
 
