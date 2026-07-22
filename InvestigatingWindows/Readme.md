@@ -58,7 +58,7 @@ The version can be found using:
 
 Go to settings > System > About
 
-![Question1](/photos/q1.png)
+![Question1](photos/q1.png)
 
 ### Question
 
@@ -98,7 +98,7 @@ Use the command: ```Get-WinEvent -FilterHashtable @{
     }
 }```
 
-![Question2](/photos/q2.png)
+![Question2](photos/q2.png)
 
 ### Question
 
@@ -130,7 +130,7 @@ Select-Object -First 1 TimeCreated,
 @{Name='Domain';Expression={$_.Properties[6].Value}},
 @{Name='LogonType';Expression={$_.Properties[8].Value}} ```
 
-![Question3](/photos/q3.png)
+![Question3](photos/q3.png)
 
 ### Question
 
@@ -154,7 +154,7 @@ Identify the first IP contacted after Windows booted.
 
 When we start the window, a programs run in which the IP is visible.
 
-![Question4](/photos/q4.png)
+![Question4](photos/q4.png)
 
 ### Question
 
@@ -178,7 +178,7 @@ Identify all users with administrative privileges.
 
 Use this command: ```Get-LocalGroupMember -Group "Administrators"```
 
-![Question5](/photos/q5.png)
+![Question5](photos/q5.png)
 
 ### Question
 
@@ -202,7 +202,7 @@ Identify persistence established through Windows Task Scheduler.
 
 Open the task scheduler and check the tasks scheduled. 
 
-![Question6](/photos/q6.png)
+![Question6](photos/q6.png)
 
 ### Question
 
@@ -226,7 +226,7 @@ Identify the script executed by the scheduled task.
 
 Check the actions section of the identified suspicious task in Task Scheduler.
 
-![Question7](/photos/q7.png)
+![Question7](photos/q7.png)
 
 ### Question
 
@@ -250,7 +250,7 @@ Identify the local listening port created by the malicious script.
 
 Check the actions section of the identified suspicious task in Task Scheduler.
 
-![Question8](/photos/q8.png)
+![Question8](photos/q8.png)
 
 ### Question
 
@@ -276,7 +276,7 @@ Windows stores the last successful logon time for every local account.
 
 Use this command:  ```net user Jenny | findstr Last```
 
-![Question9](/photos/q9.png)
+![Question9](photos/q9.png)
 
 ### Question
 
@@ -300,7 +300,7 @@ Identify the day attacker activity began.
 
 Check the file modification dates.
 
-![Question10](/photos/q10.png)
+![Question10](photos/q10.png)
 
 ### Question
 
@@ -334,7 +334,7 @@ This event indicates:
 
 It often appears immediately after an administrator or attacker logs in.
 
-![Question11](/photos/q11.png)
+![Question11](photos/q11.png)
 
 ### Question
 
@@ -358,7 +358,7 @@ Identify the credential dumping tool.
 
 Open the file location of the program which executed on startup. Check the output file and identify the credential dumpong tool.
 
-![Question12](/photos/q12.png)
+![Question12](photos/q12.png)
 
 ### Question
 
@@ -384,7 +384,7 @@ Open the file location: `C:\ > Windows > System32 > drivers > etc > hosts `
 
 There are two google mappings. Use the command "ping". If the IP matches to the one in host file then it is legitimate. Else, it may be used as C2 server.
 
-![Question13](/photos/q13.png)
+![Question13](photos/q13.png)
 
 ### Question
 
@@ -416,7 +416,7 @@ Common extensions include:
 
   Go to : `C:/inetpub/wwwroot/`. Search about the file extensions on google.
 
-  ![Question14](/photos/q14.png)
+  ![Question14](photos/q14.png)
 
 ### Question
 
@@ -446,7 +446,7 @@ Attackers often open new ports to:
 
 Search the inbound rules in the Windows Firewall. Check the rules without any group.
 
-![Question15](/photos/q15.png)
+![Question15](photos/q15.png)
 
 ### Question
 
