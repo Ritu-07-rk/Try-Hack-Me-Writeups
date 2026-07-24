@@ -1,4 +1,4 @@
-# Logless Hunt - DFIR Write-up
+# Logless Hunt
 
 > **Platform:** TryHackMe  
 > **Category:** Digital Forensics & Incident Response
